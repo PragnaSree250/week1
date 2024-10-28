@@ -1,0 +1,89 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    overflow: hidden;
+}
+
+.background {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('https://img.freepik.com/premium-photo/portrait-little-boy-riding-bicycle_1166890-347.jpg?w=1060');
+    background-size: cover;
+    background-position: center;
+}
+
+.login-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    transform: translate(-50%, -50%);
+    background:light-gradiant(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.login-container input {
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.login-container input:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(0, 128, 0, 0.5);
+}
+
+.bike-container {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.bike {
+    position: relative;
+    width: 150px;
+    height: 100px;
+    animation: ride 5s infinite linear;
+}
+
+.front-wheel {
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #666;
+    animation: spin 2s infinite linear;
+}
+
+.back-wheel {
+    position: absolute;
+    top: 60%;
+    left: 60%;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #666;
+    animation: spin 2s infinite linear;
+}
+
+.seat {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    width: 20px;
+    height: 10px;
+    background-color: #666;
+    transform: rotate(45deg);
+}
+
+.handle {
+    position: absolute;
+    top: 20%;
+}
