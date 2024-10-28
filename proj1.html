@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Login Form</title>
+    <link rel="stylesheet" href="proj1.css">
+    <script src="proj1.js"></script> 
+
+</head>
+<body>
+    <div class="background">
+        
+        </div>
+        <div class="login-container">
+            <h1>Log In</h1>
+            <form id="login-form">
+                <label for="username">Username</label>
+                <br>
+                <input type="text" id="username" placeholder="Username" required>
+                <br>
+                <label for="password">Password</label>
+                <br>
+                <input type="password" id="password" placeholder="Password" required>
+                <br>
+                <div style="display: flex; justify-content: flex-end;">
+                    <button type="submit" style="background-color: rgb(168, 206, 240); color: rgb(2, 2, 2);margin:5px; height: 5px; border: solid,black; padding: 12px 12px; text-align: center; "> Submit </button>
+                </div>
+                <br>
+                <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+                    <a href="#" id="forget-password">Forget Password</a>
+                    <a href="#" id="sign-up">Sign Up</a>
+                </div>
+            </form>
+            <div id="forget-password-modal" style="display:none;">
+                <h2>Forget Password</h2>
+                <form id="forget-password-form">
+                    <label for="forget-username">Username</label>
+                    <br>
+                    <input type="text" id="forget-username" placeholder="Username" required>
+                    <br>
+                    <label for="email">Email</label>
+                    <br>
+                    <input type="email" id="email" placeholder="Email" required>
+                    <br>
+                    <button type="submit" style="background-color: rgb(168, 206, 240); color: rgb(2, 2, 2);margin:5px; height: 5px; border: solid,black; padding: 12px 12px; text-align: center; "> Send Reset Link </button>
+                </form>
+            </div>
+            <div id="sign-up-modal" style="display:none;">
+                <h2>Sign Up</h2>
+                <form id="sign-up-form">
+                    <label for="sign-up-username">Username</label>
+                    <br>
+                    <input type="text" id="sign-up-username" placeholder="Username" required>
+                    <br>
+                    <label for="sign-up-email">Email</label>
+                    <br>
+                    <input type="email" id="sign-up-email" placeholder="Email" required>
+                    <br>
+                    <label for="sign-up-password">Password</label>
+                    <br>
+                    <input type="password" id="sign-up-password" placeholder="Password" required>
+                    <br>
+                    <button type="submit" style="background-color: rgb(168, 206, 240); color: rgb(2, 2, 2);margin:5px; height: 5px; border: solid,black; padding: 12px 12px; text-align: center; "> Sign Up </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    
