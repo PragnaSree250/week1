@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appliances - Smart Home Automation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .appliance-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            padding: 0;
+            list-style-type: none;
+        }
+        .appliance-list li {
+            background-color: white;
+            width: 200px;
+            height: 250px;
+            padding: 20px;
+            margin: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .appliance-list li button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .appliance-list li button.off {
+            background-color: #dc3545;
+        }
+        .appliance-image {
+            width: 100%;
+            height: 200px;
+            margin-bottom: 10px;
+            background-size: cover;
+        }
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+            background-color: #28a745;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Smart Home Automation</h1>
+
+    <div class="room" id="garage">
+        <div class="room-image" style="background-image: url('');"></div>
+        <div class="appliances">
+            <ul class="appliance-list" id="appliances"></ul>
+        </div>
+    </div>
+
+    <button class="back-button" onclick="window.location.href='rooms.html'">Back to Rooms</button>
+
+    <script>
+        const appliancesByRoom = {
+            kitchen: {
+                name: 'Kitchen',
+                appliances: [
+                    { name: 'Light', id: 'kitchen-light', status: 'off' },
+                    { name: 'Fan', id: 'kitchen-fan', status: 'off' },
+                    { name: 'Dish Washer', id: 'dishwasher', status: 'off' },
+                    { name: 'Refrigerator', id: 'refrigerator', status: 'on' }
+                ],
+                image: 'C:/Users/Pragna Sree/Pictures/Screenshots/kitchen.jpg'
+            },
+            bedroom: {
+                name: 'Bedroom',
+                appliances: [
+                    { name: 'Light', id: 'bedroom-light', status: 'off' },
+                    { name: 'Bed Light', id: 'bed-light', status: 'off' },
+                    { name: 'AC', id: 'ac', status: 'on' },
+                    { name: 'Smart Door', id: 'smart-door', status: 'off' }
+                ],
+                image: 'C:/Users/Pragna Sree/Pictures/Screenshots/bedroom.jpg'
+            },
+            laundry: {
+                name: 'Laundry Room',
+                appliances: [
+                    { name: 'Washing Machine', id: 'washing-machine', status: 'off' }
+                ],
+                image: 'C:/Users/Pragna Sree/Pictures/Screenshots/laundry.jpg'
+            },
+            garage: {
+                name: 'Garage',
+                appliances: [
+                    { name: 'Parking Space', id: 'parking-space', status: 'off' },
+                    { name: 'Automatic Door', id: 'automatic-door', status: 'on' }
+                ],
+                image: 'C:/Users/Pragna Sree/Pictures/Screenshots/garage.jpg'
+            },
+            dining: {
+                name: 'Dining Room',
+                appliances: [
+                    { name: 'Light', id: 'dining-light', status: 'off' },
+                    { name: 'Fan', id: 'dining-fan', status: 'off' },
+                    { name: 'TV', id: 'TV', status: 'on' }
+                ],
+                image: "C:/Users/Pragna Sree/Pictures/Screenshots/living room.jpg"
+            }
+        };
+
+        // Get the room from the URL query parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const room = urlParams.get('room');
+
+        // Populate the appliances list based on the room
+        const applianceList = document.getElementById('appliances');
+        if (appliancesByRoom[room]) {
+            document.body.insertAdjacentHTML('afterbegin', `<div class="appliance-image" style="background-image: url('${appliancesByRoom[room].image}');"></div>`);
+            appliancesByRoom[room].appliances.forEach(appliance => {
+                applianceList.innerHTML += `
+                    <li>
+                        <div>${appliance.name}</div>
+                        <p>Status: <span id="${appliance.id}-status">${appliance.status}</span></p>
+                        <button onclick="toggleAppliance('${appliance.id}', 'on')">Turn On</button>
+                        <button class="off" onclick="toggleAppliance('${appliance.id}', 'off')">Turn Off</button>
+                    </li>`;
+            });
+        } else {
+            applianceList.innerHTML = `
+                <li>
+                    <img src="C:/Users/Pragna Sree/Pictures/Screenshots/sm3.jpg" alt="No appliances" style="width:150px; height:150px;">
+                    <p>Select specific place to search the appliances.</p>
+                </li>`;
+        }
+
+        // Appliance status tracking object
+        const applianceStatus = {};
+
+        // Function to toggle appliances
+        function toggleAppliance(applianceId, state) {
+            const statusElement = document.getElementById(`${applianceId}-status`);
+            statusElement.textContent = state;
+            applianceStatus[applianceId] = state; // Update the status in the tracking object
+            alert(`${applianceId} turned ${state}`);
+        }
+    
+    </script>
+    <div class="footer">
+        &copy; 2024 Smart Home Automation. All rights reserved.
+    </div> 
+</body>
+</html>
